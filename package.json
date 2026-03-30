@@ -1,0 +1,53 @@
+{
+  "name": "portfolio-dylan",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.0",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@types/node": "^20.9.0",
+    "@types/react": "~19.1.0",
+    "@types/react-dom": "~19.1.0",
+    "@types/three": "0.176.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.41",
+    "tailwindcss": "^3.4.17",
+    "@tailwindcss/typography": "0.5.10",
+    "tailwindcss-animate": "^1.0.7",
+    "typescript": "^5.8.3",
+    "vite": "^5.4.1"
+  },
+  "dependencies": {
+    "@react-three/drei": "~10.0.8",
+    "@react-three/fiber": "~9.1.2",
+    "@tanstack/react-query": "^5.24.0",
+    "@tanstack/react-router": "~1.131.8",
+    "lucide-react": "0.511.0",
+    "react-icons": "^5.4.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-dialog": "^1.1.1",
+    "@radix-ui/react-dropdown-menu": "^2.1.1",
+    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-select": "^2.1.2",
+    "@radix-ui/react-tabs": "^1.1.0",
+    "@radix-ui/react-tooltip": "^1.1.2",
+    "@radix-ui/react-scroll-area": "^1.2.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.5.2",
+    "react": "~19.1.0",
+    "react-dom": "~19.1.0",
+    "three": "^0.176.0",
+    "zustand": "~5.0.5",
+    "motion": "^12.34.3",
+    "next-themes": "~0.4.6",
+    "sonner": "^1.7.4"
+  }
+}

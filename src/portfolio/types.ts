@@ -1,9 +1,14 @@
 export interface Project {
+  id: string;
   title: string;
   tech: string[];
   description: string;
   github: string;
   image: string;
+  context: string;
+  needs: string;
+  cdc: string;
+  accountReport: string;
 }
 
 export interface Interest {
