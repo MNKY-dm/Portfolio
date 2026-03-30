@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Figtree:wght@300..900&family=JetBrains+Mono:wght@300..700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+    --background: 0.1 0 0;
+    --foreground: 0.96 0.005 95;
+    --card: 0.14 0.005 240;
+    --card-foreground: 0.96 0.005 95;
+    --popover: 0.16 0.005 240;
+    --popover-foreground: 0.96 0.005 95;
+    --primary: 0.59 0.19 35;
+    --primary-foreground: 0.98 0 0;
+    --secondary: 0.52 0.1 155;
+    --secondary-foreground: 0.98 0 0;
+    --muted: 0.18 0.005 240;
+    --muted-foreground: 0.6 0.01 240;
+    --accent: 0.59 0.19 35;
+    --accent-foreground: 0.98 0 0;
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.25 0.01 240;
+    --input: 0.22 0.01 240;
+    --ring: 0.59 0.19 35;
+    --chart-1: 0.59 0.19 35;
+    --chart-2: 0.52 0.1 155;
+    --chart-3: 0.65 0.15 200;
+    --chart-4: 0.75 0.12 85;
+    --chart-5: 0.45 0.15 280;
+    --sidebar: 0.12 0.005 240;
+    --sidebar-foreground: 0.96 0.005 95;
+    --sidebar-primary: 0.59 0.19 35;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.52 0.1 155;
+    --sidebar-accent-foreground: 0.98 0 0;
+    --sidebar-border: 0.25 0.01 240;
+    --sidebar-ring: 0.59 0.19 35;
+  }
+
+  * { @apply border-border; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Figtree', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: 'Bricolage Grotesque', sans-serif; }
+  .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+
+  .gradient-orange {
+    background: linear-gradient(135deg, oklch(0.59 0.19 35), oklch(0.65 0.2 45));
+  }
+
+  .text-gradient-orange {
+    background: linear-gradient(135deg, oklch(0.7 0.2 35), oklch(0.75 0.22 45));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 60px oklch(0.59 0.19 35 / 0.25);
+  }
+
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
