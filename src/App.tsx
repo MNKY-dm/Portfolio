@@ -11,6 +11,12 @@ import { TechWatchSection } from "./portfolio/TechWatchSection";
 import { NAV_ITEMS } from "./portfolio/data";
 import { ProjectDetailPage } from "./portfolio/ProjectDetailPage";
 
+function getProjectFromHash(): string | null {
+    const hash = window.location.hash; // ex: "#/projects/teasy"
+    const match = hash.match(/^#\/projects\/(.+)$/);
+    return match ? match[1] : null;
+}
+
 function useFadeInOnScroll() {
   useEffect(() => {
     const elements = document.querySelectorAll(".fade-in-up");
@@ -48,6 +54,12 @@ export default function App() {
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
   useFadeInOnScroll();
 
+  useEffect(() => {
+    const onHashChange = () => setSelectedProject(getProjectFromHash());
+    window.addEventListener("hashchange", onHashChange);
+    return () => window.removeEventListener("hashchange", onHashChange);
+  }, []);
+
   // ← useEffect AVANT tout return conditionnel
   useEffect(() => {
     const sections = NAV_ITEMS.map((item) =>
@@ -65,15 +77,25 @@ export default function App() {
     return () => observer.disconnect();
   }, []);
 
+    const handleSelectProject = (id: string) => {
+        window.location.hash = `/projects/${id}`;
+        setSelectedProject(id);
+    };
+
+    const handleBack = () => {
+        window.location.hash = "";
+        setSelectedProject(null);
+    };
+
   // ← return conditionnel APRÈS tous les hooks
-  if (selectedProject) {
-    return (
-        <ProjectDetailPage
-            projectTitle={selectedProject}
-            onBack={() => setSelectedProject(null)}
-        />
-    );
-  }
+    if (selectedProject) {
+        return (
+            <ProjectDetailPage
+                projectId={selectedProject}
+                onBack={handleBack}
+            />
+        );
+    }
 
   return (
       <div className="min-h-screen bg-background text-foreground">
@@ -81,9 +103,9 @@ export default function App() {
         <main className="lg:pl-20">
           <HeroSection />
           <InterestsSection />
-          <SkillsSection />
           <ProjectsSection onSelectProject={setSelectedProject} />
           <ExperienceSection />
+          <SkillsSection />
           <TechWatchSection />
           <ContactSection />
           <Footer />

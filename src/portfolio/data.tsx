@@ -23,23 +23,7 @@ import type {
 
 export const PROJECTS: Project[] = [
   {
-    title: "Puissance 4",
-    tech: ["Python", "IA"],
-    description:
-      "Jeu de puissance 4 conçu de A à Z, en mode joueur contre joueur ou joueur contre IA (algorithme). Projet scolaire de Terminale réalisé en binôme.",
-    github: "https://github.com/MNKY-dm/Puissance-4",
-    image:
-      "https://tse2.mm.bing.net/th/id/OIP.rYWvc2bEOQOADXa4LXz3FQHaFu?pid=Api",
-  },
-  {
-    title: "Discord Clone",
-    tech: ["PHP", "CRUD", "POO", "Git"],
-    description:
-      "Site web clone de Discord réalisé en groupe. Échange de messages dans des salons, avec gestion CRUD, programmation orientée objet et versioning Git.",
-    github: "https://github.com/MNKY-dm/Discord",
-    image: "https://images4.alphacoders.com/121/1216476.jpg",
-  },
-  {
+    id: "teasy",
     title: "Teasy",
     tech: ["Java", "JavaFX", "CRUD", "MVC", "Git"],
     description:
@@ -47,6 +31,16 @@ export const PROJECTS: Project[] = [
     github: "https://github.com/MNKY-dm/Teasy",
     image:
       "http://www.saintcyrsurmer.fr/fileadmin/Contenu/3_onglet_la_ville/1_decouvrez_saint_cyr_sur_mer/evenements_animations/ticket-01.jpg",
+  },
+  {
+    id: "biblioteco",
+    title: "Biblioteco",
+    tech: ["Laravel", "PHP", "CRUD", "MVC", "Git"],
+    description:
+      "Site web de gestion de bibliothèque : emprunts et retours de livres, catalogue dynamique, rôles utilisateurs. CRUD, Eloquent ORM, architecture MVC, Git.",
+    github: "https://github.com/MNKY-dm/Biblioteco",
+    image:
+      "https://i.pinimg.com/originals/5a/fb/74/5afb74d9bffae30e5fe6d61392599d59.jpg",
   },
   {
     title: "JavaFleet",
@@ -58,13 +52,21 @@ export const PROJECTS: Project[] = [
       "https://www.goodfreephotos.com/albums/historical-battles/american-revolution/naval-battle-between-french-and-british-at-chesapeake-bay-american-revolution.jpg",
   },
   {
-    title: "Biblioteco",
-    tech: ["Laravel", "PHP", "CRUD", "MVC", "Git"],
+    title: "Puissance 4",
+    tech: ["Python", "IA"],
     description:
-      "Site web de gestion de bibliothèque : emprunts et retours de livres, catalogue dynamique, rôles utilisateurs. CRUD, Eloquent ORM, architecture MVC, Git.",
-    github: "https://github.com/MNKY-dm/Biblioteco",
+      "Jeu de puissance 4 conçu de A à Z, en mode joueur contre joueur ou joueur contre IA (algorithme). Projet scolaire de Terminale réalisé en binôme.",
+    github: "https://github.com/MNKY-dm/Puissance-4",
     image:
-      "https://i.pinimg.com/originals/5a/fb/74/5afb74d9bffae30e5fe6d61392599d59.jpg",
+      "https://tse2.mm.bing.net/th/id/OIP.rYWvc2bEOQOADXa4LXz3FQHaFu?pid=Api",
+  },
+  {
+    title: "Franciscord",
+    tech: ["PHP", "CRUD", "POO", "Git"],
+    description:
+      "Site web clone de Discord réalisé en groupe. Échange de messages dans des salons, avec gestion CRUD, programmation orientée objet et versioning Git.",
+    github: "https://github.com/MNKY-dm/Discord",
+    image: "https://images4.alphacoders.com/121/1216476.jpg",
   },
 ];
 

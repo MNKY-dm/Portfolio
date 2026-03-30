@@ -57,13 +57,15 @@ function ProjectCard({
               Voir le code
               <ExternalLink className="w-3 h-3" />
             </a>
-            <button
-                type="button"
-                onClick={() => onSelectProject(project.title)}
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
-            >
-              Détails →
-            </button>
+            {project.id && (
+                <button
+                    type="button"
+                    onClick={() => onSelectProject(project.id!)}
+                    className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                >
+                  Détails →
+                </button>
+            )}
           </div>
         </div>
       </div>

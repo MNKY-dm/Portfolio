@@ -4,12 +4,12 @@ import { Github, ExternalLink, ArrowLeft } from "lucide-react";
 import type { Project } from "./types";
 
 interface Props {
-    projectTitle: string;
+    projectId: string;  // ← "teasy" ou "biblioteco"
     onBack: () => void;
 }
 
-export function ProjectDetailPage({ projectTitle, onBack }: Props) {
-    const project = PROJECTS.find((p) => p.title === projectTitle);
+export function ProjectDetailPage({ projectId, onBack }: Props) {
+    const project = PROJECTS.find((p) => p.id === projectId);
 
     if (!project) {
         return (
