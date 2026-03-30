@@ -78,7 +78,7 @@ export default function App() {
   }, []);
 
     const handleSelectProject = (id: string) => {
-        window.location.hash = `/projects/${id}`;
+        window.location.hash = `/${id}`;
         setSelectedProject(id);
     };
 
@@ -103,7 +103,7 @@ export default function App() {
         <main className="lg:pl-20">
           <HeroSection />
           <InterestsSection />
-          <ProjectsSection onSelectProject={setSelectedProject} />
+          <ProjectsSection onSelectProject={handleSelectProject} />
           <ExperienceSection />
           <SkillsSection />
           <TechWatchSection />
