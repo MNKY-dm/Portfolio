@@ -72,9 +72,9 @@ export default function App() {
       <FloatingNav active={activeSection} />
       <main className="lg:pl-20">
         <HeroSection />
-        <ProjectsSection />
         <InterestsSection />
         <SkillsSection />
+        <ProjectsSection />
         <ExperienceSection />
         <TechWatchSection />
         <ContactSection />
