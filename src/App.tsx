@@ -54,11 +54,12 @@ export default function App() {
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
   useFadeInOnScroll();
 
-  useEffect(() => {
-    const onHashChange = () => setSelectedProject(getProjectFromHash());
-    window.addEventListener("hashchange", onHashChange);
-    return () => window.removeEventListener("hashchange", onHashChange);
-  }, []);
+    useEffect(() => {
+        const onHashChange = () => setSelectedProject(getProjectFromHash());
+        window.addEventListener("hashchange", onHashChange);
+        setSelectedProject(getProjectFromHash()); // ← lecture au montage
+        return () => window.removeEventListener("hashchange", onHashChange);
+    }, []);
 
   // ← useEffect AVANT tout return conditionnel
   useEffect(() => {
@@ -78,13 +79,13 @@ export default function App() {
   }, []);
 
     const handleSelectProject = (id: string) => {
-        window.location.hash = `/${id}`;
-        setSelectedProject(id);
+        window.location.hash = `/projects/${id}`; // ← "/projects/" ajouté
+        // ← plus de setSelectedProject ici, le hashchange s'en charge
     };
 
     const handleBack = () => {
         window.location.hash = "";
-        setSelectedProject(null);
+        // ← plus de setSelectedProject ici non plus
     };
 
   // ← return conditionnel APRÈS tous les hooks

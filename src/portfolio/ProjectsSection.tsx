@@ -60,7 +60,10 @@ function ProjectCard({
             {project.id && (
                 <button
                     type="button"
-                    onClick={() => onSelectProject(project.id!)}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onSelectProject(project.id!);
+                    }}
                     className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
                 >
                   Détails →
