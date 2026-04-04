@@ -8,7 +8,8 @@ export interface Project {
   context?: string;
   needs?: string;
   cdc?: string;
-  accountReport?: string;
+  report?: string;
+  video?: string;
 }
 
 export interface Interest {

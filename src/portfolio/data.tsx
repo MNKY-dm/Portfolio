@@ -31,6 +31,30 @@ export const PROJECTS: Project[] = [
     github: "https://github.com/MNKY-dm/Teasy",
     image:
       "http://www.saintcyrsurmer.fr/fileadmin/Contenu/3_onglet_la_ville/1_decouvrez_saint_cyr_sur_mer/evenements_animations/ticket-01.jpg",
+    context: `Teasy est un projet fictif réalisé dans le cadre de l'épreuve E6 du BTS SIO option SLAM (2ème année). Développé en solo, il s'agit d'une application de bureau Java / JavaFX simulant une plateforme de billetterie pour des événements culturels et de divertissement. L'objectif pédagogique était de concevoir et implémenter une application complète respectant une architecture MVC, un CRUD complet, une gestion des rôles utilisateurs, et un versioning Git rigoureux.`,
+    needs: "L'application doit permettre à différents types d'utilisateurs d'interagir avec une plateforme de billetterie selon leur rôle :\n" +
+        "\n" +
+        "**Besoins fonctionnels**\n" +
+        "- Consultation d'un catalogue d'événements (concerts, spectacles, expositions...)\n" +
+        "- Achat de billets pour un événement disponible\n" +
+        "- Consultation et modification du profil utilisateur\n" +
+        "- Création et modification d'événements par les artistes\n" +
+        "- Panel d'administration permettant la gestion complète des données (utilisateurs, événements, billets)\n" +
+        "\n" +
+        "**Rôles utilisateurs**\n" +
+        "- **Client** : consulte le catalogue, achète des billets, gère son profil\n" +
+        "- **Artiste** : crée et gère ses propres événements\n" +
+        "- **Administrateur** : accès complet à toutes les données via un panel dédié\n" +
+        "\n" +
+        "**Besoins non fonctionnels**\n" +
+        "- Interface graphique desktop développée avec JavaFX\n" +
+        "- Architecture MVC stricte assurant la séparation des responsabilités\n" +
+        "- Persistance des données via une base de données relationnelle\n" +
+        "- Gestion sécurisée des accès selon le rôle connecté\n" +
+        "- Versioning du code source avec Git / GitHub",
+    cdc: "",        // à remplir quand disponible
+    report: "",     // à remplir quand disponible
+    video: "",      // à remplir quand disponible
   },
   {
     id: "biblioteco",
