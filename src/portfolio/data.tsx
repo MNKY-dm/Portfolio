@@ -192,17 +192,17 @@ export const TECH_WATCH: TechWatch[] = [
 
 export const NAV_ITEMS: NavItem[] = [
   { id: "hero", label: "Accueil", icon: <Home className="w-4 h-4" /> },
-  { id: "projets", label: "Projets", icon: <FolderOpen className="w-4 h-4" /> },
   { id: "interets", label: "Intérêts", icon: <Heart className="w-4 h-4" /> },
-  {
-    id: "competences",
-    label: "Compétences",
-    icon: <Code2 className="w-4 h-4" />,
-  },
+  { id: "projets", label: "Projets", icon: <FolderOpen className="w-4 h-4" /> },
   {
     id: "experience",
     label: "Expérience",
     icon: <Briefcase className="w-4 h-4" />,
+  },
+  {
+    id: "competences",
+    label: "Compétences",
+    icon: <Code2 className="w-4 h-4" />,
   },
   { id: "veille", label: "Veille", icon: <Rss className="w-4 h-4" /> },
   {

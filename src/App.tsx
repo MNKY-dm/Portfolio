@@ -30,7 +30,7 @@ function useFadeInOnScroll() {
     );
     for (const el of elements) observer.observe(el);
     return () => observer.disconnect();
-  });
+  }, []);
 }
 
 function Footer() {
