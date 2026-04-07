@@ -61,11 +61,11 @@ export default function App() {
     useEffect(() => {
         const onHashChange = () => setSelectedProject(getProjectFromHash());
         window.addEventListener("hashchange", onHashChange);
-        setSelectedProject(getProjectFromHash()); // ← lecture au montage
+        setSelectedProject(getProjectFromHash());
         return () => window.removeEventListener("hashchange", onHashChange);
     }, []);
 
-  // ← useEffect AVANT tout return conditionnel
+
   useEffect(() => {
     const sections = NAV_ITEMS.map((item) =>
         document.getElementById(item.id),
@@ -83,16 +83,14 @@ export default function App() {
   }, []);
 
     const handleSelectProject = (id: string) => {
-        window.location.hash = `/projects/${id}`; // ← "/projects/" ajouté
-        // ← plus de setSelectedProject ici, le hashchange s'en charge
+        window.location.hash = `/projects/${id}`;
+
     };
 
     const handleBack = () => {
         window.location.hash = "";
-        // ← plus de setSelectedProject ici non plus
     };
 
-  // ← return conditionnel APRÈS tous les hooks
     if (selectedProject) {
         return (
             <ProjectDetailPage

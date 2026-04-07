@@ -1,8 +1,8 @@
 import { Badge } from "@/components/ui/badge";
 import { ChevronLeft, ChevronRight, ExternalLink, Github } from "lucide-react";
-import { useState } from "react";
 import { PROJECTS } from "./data";
 import type { Project } from "./types";
+import { useState, useRef } from "react";
 
 interface Props {
   onSelectProject: (title: string) => void;
@@ -77,9 +77,39 @@ function ProjectCard({
 
 export function ProjectsSection({ onSelectProject }: Props) {
   const [current, setCurrent] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [featuredSlot, setFeaturedSlot] = useState(2);
+  const trackRef = useRef<HTMLDivElement>(null);
   const total = PROJECTS.length;
-  const prev = () => setCurrent((c) => (c - 1 + total) % total);
-  const next = () => setCurrent((c) => (c + 1) % total);
+
+  const navigate = (dir: "left" | "right") => {
+    if (isAnimating || !trackRef.current) return;
+    setIsAnimating(true);
+
+    // Change le style actif immédiatement
+    setFeaturedSlot(dir === "right" ? 3 : 1);
+
+    const cardWidth = trackRef.current.offsetWidth / 3;
+    const translateX = dir === "right" ? -cardWidth : cardWidth;
+
+    trackRef.current.style.transition = "transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)";
+    trackRef.current.style.transform = `translateX(calc(-33.333% + ${translateX}px))`;
+
+    setTimeout(() => {
+      trackRef.current!.style.transition = "none";
+      trackRef.current!.style.transform = "translateX(-33.333%)";
+      setCurrent((c) =>
+          dir === "right" ? (c + 1) % total : (c - 1 + total) % total
+      );
+      setFeaturedSlot(2); // recentre le slot actif
+      setTimeout(() => setIsAnimating(false), 20);
+    }, 450);
+  };
+
+  // 5 cards : [-2, -1, 0, +1, +2] — la fenêtre montre [-1, 0, +1]
+  const slots = [-2, -1, 0, 1, 2].map((offset) =>
+      PROJECTS[(current + offset + total * 10) % total]
+  );
 
   return (
       <section id="projets" className="py-24 px-6">
@@ -92,36 +122,51 @@ export function ProjectsSection({ onSelectProject }: Props) {
               Ce que j'ai construit
             </h2>
           </div>
-          <div className="relative flex items-stretch justify-center gap-3 md:gap-5">
-            <button type="button" onClick={prev} aria-label="Projet précédent"
-                    className="flex-shrink-0 self-center w-10 h-10 flex items-center justify-center rounded-full border border-border bg-card/80 hover:bg-primary/20 hover:border-primary transition-all text-muted-foreground hover:text-primary">
+
+          <div className="relative flex items-center justify-center gap-3 md:gap-5">
+            <button type="button" onClick={() => navigate("left")} aria-label="Projet précédent"
+                    className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full border border-border bg-card/80 hover:bg-primary/20 hover:border-primary transition-all text-muted-foreground hover:text-primary z-10">
               <ChevronLeft className="w-5 h-5" />
             </button>
-            <div className="flex gap-3 overflow-hidden w-full max-w-4xl">
-              {[-1, 0, 1].map((offset) => {
-                const idx = (current + offset + total) % total;
-                const project = PROJECTS[idx];
-                const isCenter = offset === 0;
-                return (
-                    <div key={`${idx}-${offset}`}
-                         className={`transition-all duration-500 flex-1 ${
-                             isCenter ? "scale-100 opacity-100" : "scale-95 opacity-40 hidden md:block"
-                         }`}
+
+            {/* Fenêtre : exactement 3 cards larges */}
+            <div className="overflow-x-hidden w-full max-w-4xl py-4">
+              {/* Bande de 5 cards, translatee pour centrer le slot 0 */}
+              <div
+                  ref={trackRef}
+                  className="flex"
+                  style={{ transform: "translateX(-33.333%)" }}
+              >
+                {slots.map((project, i) => (
+                    <div
+                        key={`slot-${i}-${project.title}`}
+                        className="flex-shrink-0 px-2"
+                        style={{ width: "33.333%" }}
+                        onClick={() => {
+                          if (i < 2) navigate("left");
+                          else if (i > 2) navigate("right");
+                        }}
                     >
-                      <ProjectCard
-                          project={project}
-                          featured={isCenter}
-                          onSelectProject={onSelectProject}
-                      />
+                      <div className={`h-full transition-opacity duration-300 cursor-pointer ${
+                          i === featuredSlot ? "opacity-100" : "opacity-40 hover:opacity-70"
+                      }`}>
+                        <ProjectCard
+                            project={project}
+                            featured={i === 2}
+                            onSelectProject={onSelectProject}
+                        />
+                      </div>
                     </div>
-                );
-              })}
+                ))}
+              </div>
             </div>
-            <button type="button" onClick={next} aria-label="Projet suivant"
-                    className="flex-shrink-0 self-center w-10 h-10 flex items-center justify-center rounded-full border border-border bg-card/80 hover:bg-primary/20 hover:border-primary transition-all text-muted-foreground hover:text-primary">
+
+            <button type="button" onClick={() => navigate("right")} aria-label="Projet suivant"
+                    className="flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-full border border-border bg-card/80 hover:bg-primary/20 hover:border-primary transition-all text-muted-foreground hover:text-primary z-10">
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>
+
           <div className="flex justify-center gap-2 mt-8">
             {PROJECTS.map((project, i) => (
                 <button type="button" key={project.title} onClick={() => setCurrent(i)}
