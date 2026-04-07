@@ -17,20 +17,24 @@ function getProjectFromHash(): string | null {
     return match ? match[1] : null;
 }
 
-function useFadeInOnScroll() {
-  useEffect(() => {
-    const elements = document.querySelectorAll(".fade-in-up");
-    const observer = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            if (entry.isIntersecting) entry.target.classList.add("visible");
-          }
-        },
-        { threshold: 0.12 },
-    );
-    for (const el of elements) observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+function useFadeInOnScroll(dep: unknown) {
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            const elements = document.querySelectorAll(".fade-in-up");
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    for (const entry of entries) {
+                        if (entry.isIntersecting) entry.target.classList.add("visible");
+                    }
+                },
+                { threshold: 0.12 },
+            );
+            for (const el of elements) observer.observe(el);
+            return () => observer.disconnect();
+        }, 50);
+
+        return () => clearTimeout(timeout);
+    }, [dep]);
 }
 
 function Footer() {
@@ -52,7 +56,7 @@ function Footer() {
 export default function App() {
   const [activeSection, setActiveSection] = useState("hero");
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
-  useFadeInOnScroll();
+  useFadeInOnScroll(selectedProject);
 
     useEffect(() => {
         const onHashChange = () => setSelectedProject(getProjectFromHash());
