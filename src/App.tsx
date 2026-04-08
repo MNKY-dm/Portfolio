@@ -11,6 +11,7 @@ import { TechWatchSection } from "./portfolio/TechWatchSection";
 import { NAV_ITEMS } from "./portfolio/data";
 import { ProjectDetailPage } from "./portfolio/ProjectDetailPage";
 import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Analytics } from "@vercel/analytics/next"
 
 function getProjectFromHash(): string | null {
     const hash = window.location.hash; // ex: "#/projects/teasy"
