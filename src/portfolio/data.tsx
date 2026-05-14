@@ -155,17 +155,23 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
   },
   {
     icon: <Cpu className="w-5 h-5" />,
-    label: "Frameworks",
-    skills: [{ name: "Laravel" }, { name: "JavaFX" }],
+    label: "Frameworks / Libraries",
+    skills: [
+      { name: "Laravel" },
+      { name: "JavaFX" },
+      { name: "React" }
+    ],
   },
   {
     icon: <Wrench className="w-5 h-5" />,
     label: "Outils",
     skills: [
       { name: "Git / GitHub" },
+      { name: "Docker" },
       { name: "VS Code" },
       { name: "IntelliJ" },
       { name: "PHPStorm" },
+      { name: "WebStorm" },
     ],
   },
   {
@@ -175,7 +181,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       { name: "Curiosité" },
       { name: "Travail en équipe" },
       { name: "Résolution de problèmes" },
-      { name: "Assimilation rapide des informations" },
+      { name: "Compréhension rapide des " },
     ],
   },
 ];
